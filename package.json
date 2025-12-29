@@ -1,0 +1,50 @@
+{
+	"name": "cake-commerce",
+	"version": "0.1.0",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+git@github.com:up2dul/cake-commerce.git"
+	},
+	"author": {
+		"email": "up2dul@gmail.com",
+		"name": "Abdul"
+	},
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "biome check",
+		"format": "biome format --write",
+		"check": "biome check --write",
+		"prepare": "husky",
+		"commitlint": "commitlint --edit"
+	},
+	"dependencies": {
+		"@phosphor-icons/react": "^2.1.10",
+		"clsx": "^2.1.1",
+		"next": "16.1.1",
+		"react": "19.2.3",
+		"react-dom": "19.2.3",
+		"tailwind-merge": "^3.4.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.10",
+		"@commitlint/config-conventional": "^20.2.0",
+		"@tailwindcss/postcss": "^4.1.18",
+		"@types/node": "^25.0.3",
+		"@types/react": "^19.2.7",
+		"@types/react-dom": "^19.2.3",
+		"commitlint": "^20.2.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.2.7",
+		"tailwindcss": "^4.1.18",
+		"typescript": "^5.9.3"
+	},
+	"lint-staged": {
+		"*.{tsx,ts,css,md,json}": "biome format --write"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
+}

@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Rozha_One } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { cn } from "@/lib/utils";
 
 const montserrat = Montserrat({
 	variable: "--font-montserrat",
+	subsets: ["latin"],
+	display: "swap",
+});
+const rozhaOne = Rozha_One({
+	variable: "--font-rozha-one",
+	weight: "400",
 	subsets: ["latin"],
 	display: "swap",
 });
@@ -23,7 +29,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={cn(montserrat.variable, "antialiased")}>
+			<body
+				className={cn(montserrat.variable, rozhaOne.variable, "antialiased")}
+			>
 				<Navbar />
 
 				{children}

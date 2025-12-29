@@ -15,7 +15,7 @@ export const Navbar = () => {
 		<nav
 			className={cn(
 				"flex items-center justify-between",
-				"py-3.5 px-4 md:py-3 md:px-8 lg:px-10",
+				"py-3.5 section-px md:py-3",
 				"fixed top-0 inset-x-0 z-30 w-full",
 				isHome ? "bg-transparent" : "bg-[#3F4B1F]",
 			)}
@@ -37,7 +37,7 @@ export const Navbar = () => {
 			<div
 				className={cn(
 					"hidden items-center gap-5 font-bold lg:gap-6 md:flex",
-					"text-xs uppercase [&>ul>li>a]:hover:text-slate-300 transition-colors",
+					"text-xs uppercase [&>ul>li>a]:hover:text-slate-300 transition-colors duration-300",
 				)}
 			>
 				<ul className="flex items-center gap-5 lg:gap-6">

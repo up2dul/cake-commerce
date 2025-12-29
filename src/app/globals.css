@@ -23,3 +23,23 @@ body {
 	color: var(--foreground);
 	font-family: var(--font-montserrat);
 }
+
+/* px-4 md:px-8 lg:px-10 */
+.section-px {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+@media (min-width: 768px) {
+	.section-px {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+@media (min-width: 1024px) {
+	.section-px {
+		padding-left: 2.5rem;
+		padding-right: 2.5rem;
+	}
+}

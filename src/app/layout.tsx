@@ -23,9 +23,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body
-				className={cn(montserrat.variable, "antialiased", "pt-19 md:pt-18")}
-			>
+			<body className={cn(montserrat.variable, "antialiased")}>
 				<Navbar />
 
 				{children}

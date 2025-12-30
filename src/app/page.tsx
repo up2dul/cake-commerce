@@ -1,7 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
+import GroupOrderSectionImage from "@/assets/home_group-order.webp";
 import HeroBannerImage from "@/assets/home_hero-banner.webp";
 import HighlightSectionImage from "@/assets/home_highlight.webp";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -152,7 +155,27 @@ export default function Home() {
 			</section>
 
 			{/* Group order */}
-			<section className="section-px pt-10 pb-12"></section>
+			<section className="section-px pt-10 pb-12 flex flex-col items-center justify-between gap-y-8 gap-x-4 md:flex-row">
+				<div className="flex flex-col gap-4 shrink-0 md:w-2/5 lg:w-109.5">
+					<Image src={LogoImage} alt="Cake Commerce Logo" />
+					<h1 className="font-bold text-xl md:text-[30px]">GROUP ORDER</h1>
+					<p>
+						Whether you're treating clients or celebrating a company milestone,
+						our cakes are sure to impress. We offer a variety of sizes to suit
+						any occasion.
+					</p>
+					<Button className="mt-2 self-start">DISCOVER MORE</Button>
+				</div>
+
+				<div className="h-65.5 relative w-full bg-cover bg-center bg-no-repeat md:w-167 md:h-133.5">
+					<Image
+						src={GroupOrderSectionImage.src}
+						alt="Group Order Cake"
+						className="object-cover size-full"
+						fill
+					/>
+				</div>
+			</section>
 		</main>
 	);
 }

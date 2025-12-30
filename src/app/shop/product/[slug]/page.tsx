@@ -1,6 +1,9 @@
+import { MinusCircleIcon, PlusCircleIcon } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
+import { cn } from "@/lib/utils";
 import { CakeWording, GreetingCard } from "./_components/optional-checkbox";
 import { VariantButton } from "./_components/variant-button";
 
@@ -30,7 +33,7 @@ export default function ProductDetail() {
 			</div>
 
 			<div className="flex flex-col md:flex-row">
-				<section className="aspect-square w-full h-90 relative md:size-96 lg:size-177">
+				<section className="aspect-square w-full h-90 relative md:size-96 lg:size-120 xl:size-177">
 					<Image
 						src="https://cdn.shopify.com/s/files/1/0745/6371/5346/files/RedVelvetPie.jpg?v=1766363474"
 						alt="Red Velvet Cake"
@@ -39,23 +42,25 @@ export default function ProductDetail() {
 					/>
 				</section>
 
-				<section className="section-px pt-6 flex-1 md:pr-10 md:pt-12 lg:pt-16 md:pl-12 lg:pl-16">
-					<Tag>BEST SELLER</Tag>
+				<div className="section-px pt-6 flex-1 md:pr-10 md:pt-12 lg:pt-16 md:pl-12 lg:pl-16">
+					<section>
+						<Tag>BEST SELLER</Tag>
 
-					<div className="mt-5.5 flex items-center justify-between gap-2 md:mt-8">
-						<h1 className="font-bold text-[22px] md:text-2xl">
-							RED VELVET CAKE
-						</h1>
-						<h2 className="font-rozha-one text-philippine-brown text-2xl/8 md:text-[30px]">
-							900
-						</h2>
-					</div>
+						<div className="mt-5.5 flex items-center justify-between gap-2 md:mt-8">
+							<h1 className="font-bold text-[22px] md:text-2xl">
+								RED VELVET CAKE
+							</h1>
+							<h2 className="font-rozha-one text-philippine-brown text-2xl/8 md:text-[30px]">
+								900
+							</h2>
+						</div>
 
-					<p className="mt-2 text-raisin-black text-[13px] md:text-sm">
-						Red velvet sponge, cream cheese, nougat, rum
-					</p>
+						<p className="mt-2 text-raisin-black text-[13px] md:text-sm">
+							Red velvet sponge, cream cheese, nougat, rum
+						</p>
+					</section>
 
-					<div className="mt-6 border-t pt-4 text-raisin-black md:pt-6">
+					<section className="mt-6 border-t pt-4 text-raisin-black md:pt-6">
 						<h2 className="font-semibold text-sm md:text-base">CAKE SIZE</h2>
 
 						<ul className="mt-3 grid gap-4 grid-cols-2 xl:grid-cols-4">
@@ -72,18 +77,20 @@ export default function ProductDetail() {
 								<VariantButton />
 							</li>
 						</ul>
-					</div>
+					</section>
 
-					<ul className="mt-4 border-b">
-						<li className="py-4 border-t border-dashed">
-							<CakeWording />
-						</li>
-						<li className="py-4 border-t border-dashed">
-							<GreetingCard />
-						</li>
-					</ul>
+					<section className="mt-4 border-b">
+						<ul>
+							<li className="py-4 border-t border-dashed">
+								<CakeWording />
+							</li>
+							<li className="py-4 border-t border-dashed">
+								<GreetingCard />
+							</li>
+						</ul>
+					</section>
 
-					<div className="mt-6 mb-37 text-raisin-black md:mb-42">
+					<section className="mt-6 mb-12 text-raisin-black md:mb-15">
 						<h2 className="font-semibold text-sm md:text-base">
 							TERMS & CONDITIONS
 						</h2>
@@ -93,8 +100,39 @@ export default function ProductDetail() {
 								<li key={index}>{item}</li>
 							))}
 						</ul>
+					</section>
+
+					{/* Quantity */}
+					<div
+						className={cn(
+							"sticky bottom-0 h-25 w-full py-6 px-4 bg-white border border-raisin-black",
+							"flex items-center justify-between gap-2 md:gap-4",
+						)}
+					>
+						<div>
+							<span className="font-medium text-xs md:text-sm">QUANTITY</span>
+							<div className="mt-3 flex items-center gap-4 md:gap-6">
+								<button type="button">
+									<MinusCircleIcon
+										size={24}
+										weight="thin"
+										className="md:size-8"
+									/>
+								</button>
+								<span className="font-rozha-one text-xl md:text-2xl">1</span>
+								<button type="button">
+									<PlusCircleIcon
+										size={24}
+										weight="thin"
+										className="md:size-8"
+									/>
+								</button>
+							</div>
+						</div>
+
+						<Button size="lg">ADD TO CART</Button>
 					</div>
-				</section>
+				</div>
 			</div>
 		</>
 	);

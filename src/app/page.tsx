@@ -4,12 +4,13 @@ import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import GroupOrderSectionImage from "@/assets/home_group-order.webp";
 import HeroBannerImage from "@/assets/home_hero-banner.webp";
 import HighlightSectionImage from "@/assets/home_highlight.webp";
+import { ProductCard } from "@/components/common/product-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
 	return (
-		<main>
+		<>
 			{/* Hero banner */}
 			<section
 				className={cn(
@@ -68,65 +69,14 @@ export default function Home() {
 						"md:grid grid-cols-3",
 					)}
 				>
-					<li>
-						<Link href="/shop" className="group block">
-							<div className="relative aspect-square overflow-hidden size-70 md:size-auto">
-								<Image
-									src="https://cdn.shopify.com/s/files/1/0745/6371/5346/files/RedVelvetPie.jpg?v=1766363474"
-									alt="Red Velvet Cake"
-									className="object-cover group-hover:scale-110 transition-transform"
-									fill
-								/>
-							</div>
-							<div className="mt-4 flex items-center justify-between gap-1">
-								<span className="font-semibold text-sm text-raisin-black lg:text-base">
-									RED VELVET CAKE
-								</span>
-								<span className="font-rozha-one text-philippine-brown lg:text-xl">
-									900
-								</span>
-							</div>
-						</Link>
+					<li className="min-w-[288px] md:min-w-auto">
+						<ProductCard />
 					</li>
-					<li>
-						<Link href="/shop" className="group block">
-							<div className="relative aspect-square overflow-hidden size-70 md:size-auto">
-								<Image
-									src="https://cdn.shopify.com/s/files/1/0745/6371/5346/files/RedVelvetPie.jpg?v=1766363474"
-									alt="Red Velvet Cake"
-									className="object-cover group-hover:scale-110 transition-transform"
-									fill
-								/>
-							</div>
-							<div className="mt-4 flex items-center justify-between gap-1">
-								<span className="font-semibold text-sm text-raisin-black lg:text-base">
-									RED VELVET CHRISTMAS EDITION
-								</span>
-								<span className="font-rozha-one text-philippine-brown lg:text-xl">
-									850
-								</span>
-							</div>
-						</Link>
+					<li className="min-w-[288px] md:min-w-auto">
+						<ProductCard />
 					</li>
-					<li>
-						<Link href="/shop" className="group block">
-							<div className="relative aspect-square overflow-hidden size-70 md:size-auto">
-								<Image
-									src="https://cdn.shopify.com/s/files/1/0745/6371/5346/files/RedVelvetPie.jpg?v=1766363474"
-									alt="Red Velvet Cake"
-									className="object-cover group-hover:scale-110 transition-transform"
-									fill
-								/>
-							</div>
-							<div className="mt-4 flex items-center justify-between gap-1">
-								<span className="font-semibold text-sm text-raisin-black lg:text-base">
-									CHOCOLATE CRUNCH CAKE
-								</span>
-								<span className="font-rozha-one text-philippine-brown lg:text-xl">
-									720
-								</span>
-							</div>
-						</Link>
+					<li className="min-w-[288px] md:min-w-auto">
+						<ProductCard />
 					</li>
 				</ul>
 			</section>
@@ -176,6 +126,6 @@ export default function Home() {
 					/>
 				</div>
 			</section>
-		</main>
+		</>
 	);
 }

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import HeroBannerImage from "@/assets/cake-commerce-hero-banner.webp";
+import HeroBannerImage from "@/assets/home_hero-banner.webp";
+import HighlightSectionImage from "@/assets/home_highlight.webp";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -38,7 +39,12 @@ export default function Home() {
 			</section>
 
 			{/* Products */}
-			<section className="section-px py-10 uppercase md:py-20">
+			<section
+				className={cn(
+					"section-px py-10 uppercase md:py-20",
+					"relative text-white bg-cover bg-center bg-no-repeat",
+				)}
+			>
 				<div className="flex items-center justify-between">
 					<h1 className="font-bold text-[22px] md:text-[30px]">
 						OUR SIGNATURE CAKES
@@ -123,8 +129,30 @@ export default function Home() {
 			</section>
 
 			{/* Highlight */}
+			<section
+				className={cn(
+					"section-px w-full h-120 md:h-140 lg:h-165",
+					"relative text-white bg-cover bg-bottom bg-repeat-y",
+					"flex flex-col justify-end pb-6 md:pb-8 lg:pb-12",
+				)}
+				style={{ backgroundImage: `url(${HighlightSectionImage.src})` }}
+			>
+				<div className="relative z-1">
+					<h1 className="font-bold text-xl md:text-2xl">
+						UNION MADE IS WELL MADE
+					</h1>
+					<p className="font-medium text-sm mt-1.5 md:mt-2">
+						Our cakes are crafted with premium ingredients to guarantee quality
+						in every bite
+					</p>
+				</div>
+
+				{/* Shadow overlay at bottom (only on mobile) */}
+				<div className="block lg:hidden absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black/60 to-transparent" />
+			</section>
 
 			{/* Group order */}
+			<section className="section-px pt-10 pb-12"></section>
 		</main>
 	);
 }

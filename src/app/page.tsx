@@ -63,7 +63,7 @@ export default function Home() {
 
 				<ul
 					className={cn(
-						"mt-6 overflow-x-auto pb-2",
+						"mt-6 overflow-x-auto px-1 py-2",
 						"flex gap-4 lg:gap-6",
 						"md:grid grid-cols-3",
 					)}

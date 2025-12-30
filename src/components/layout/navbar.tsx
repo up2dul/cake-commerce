@@ -4,12 +4,15 @@ import { ListIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useWindowScroll } from "react-use";
 import LogoImage from "@/assets/cake-commerce-logo-light.svg";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
 	const pathname = usePathname();
-	const isHome = pathname === "/";
+	const isHomePage = pathname === "/";
+	const { y } = useWindowScroll();
+	const isTopHomePage = isHomePage && y < 100;
 
 	return (
 		<nav
@@ -17,7 +20,8 @@ export const Navbar = () => {
 				"flex items-center justify-between text-white",
 				"py-3.5 section-px md:py-3",
 				"fixed top-0 inset-x-0 z-30 w-full",
-				isHome ? "bg-transparent" : "bg-army-green",
+				"transition-colors duration-300 ease-in-out",
+				isTopHomePage ? "bg-transparent" : "bg-army-green",
 			)}
 		>
 			<Link href="/" aria-label="Cake Commerce Home">

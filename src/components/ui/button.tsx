@@ -9,7 +9,7 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					"bg-army-green text-primary-foreground [a]:hover:bg-army-green/80",
+					"bg-army-green text-primary-foreground [a]:hover:bg-army-green/80 enabled:hover:bg-army-green/80 aria-expanded:bg-army-green",
 				outline:
 					"border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground",
 				secondary:

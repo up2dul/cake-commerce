@@ -46,7 +46,7 @@ export default function Home() {
 			<section
 				className={cn(
 					"section-px py-10 uppercase md:py-20",
-					"relative text-white bg-cover bg-center bg-no-repeat",
+					"relative bg-cover bg-center bg-no-repeat",
 				)}
 			>
 				<div className="flex items-center justify-between">
@@ -56,7 +56,7 @@ export default function Home() {
 
 					<Link
 						href="/shop"
-						className="hidden font-bold text-sm text-army-green hover:text-slate-500 md:block"
+						className="hidden font-bold text-sm text-army-green hover:text-darker-green md:block"
 					>
 						SHOP NOW
 					</Link>

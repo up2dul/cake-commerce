@@ -73,10 +73,10 @@ export const Navbar = () => {
 				>
 					<ul className="flex items-center gap-5 lg:gap-6">
 						<li>
-							<Link href="/shop">Shop</Link>
+							<Link href="/shop">SHOP</Link>
 						</li>
 						<li>
-							<Link href="/group-order">Group Order</Link>
+							<Link href="/group-order">GROUP ORDER</Link>
 						</li>
 						<li>
 							<Link href="/faq">FAQ</Link>
@@ -85,10 +85,10 @@ export const Navbar = () => {
 					<span>•</span>
 					<ul className="flex items-center gap-5 lg:gap-6">
 						<li>
-							<Link href="/cart">Cart</Link>
+							<Link href="/cart">CART</Link>
 						</li>
 						<li>
-							<Link href="/auth/login">Account</Link>
+							<Link href="/auth/login">ACCOUNT</Link>
 						</li>
 					</ul>
 				</div>
@@ -121,7 +121,7 @@ export const Navbar = () => {
 							<button
 								type="button"
 								aria-label="Close menu"
-								className="float-right hover:text-slate-300"
+								className="absolute top-6 right-6 hover:text-slate-300"
 								onClick={() => setIsMenuOpen(false)}
 							>
 								<XIcon size={32} weight="bold" />
@@ -130,26 +130,26 @@ export const Navbar = () => {
 							<ul
 								className={cn(
 									"h-full flex flex-col items-center justify-center gap-6",
-									"font-bold uppercase text-3xl [&>li>a]:hover:text-slate-400 [&>li>button]:hover:text-slate-400 sm:text-4xl",
+									"font-bold text-3xl [&>li>a]:hover:text-slate-400 [&>li>button]:hover:text-slate-400 sm:text-4xl",
 								)}
 							>
 								<li>
-									<Link href="/">Home</Link>
+									<Link href="/">HOME</Link>
 								</li>
 								<li>
-									<Link href="/shop">Shop</Link>
+									<Link href="/shop">SHOP</Link>
 								</li>
 								<li>
-									<Link href="/group-order">Group Order</Link>
+									<Link href="/group-order">GROUP ORDER</Link>
 								</li>
 								<li>
 									<Link href="/faq">FAQ</Link>
 								</li>
 								<li>
-									<button type="button">Cart</button>
+									<button type="button">CART</button>
 								</li>
 								<li>
-									<Link href="/auth/login">Account</Link>
+									<Link href="/auth/login">ACCOUNT</Link>
 								</li>
 							</ul>
 						</motion.aside>

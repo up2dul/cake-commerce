@@ -47,6 +47,7 @@ export default function RootLayout({
 					backgroundImage: `url(${BgPattern.src})`,
 					backgroundPosition: "center",
 					backgroundRepeat: "repeat",
+					backgroundSize: "60%",
 				}}
 			>
 				<NextTopLoader color="oklch(60% 0.118 184.704)" />

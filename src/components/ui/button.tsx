@@ -1,6 +1,6 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
-
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
@@ -9,7 +9,7 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					"bg-army-green text-primary-foreground [a]:hover:bg-army-green/80 enabled:hover:bg-army-green/80 aria-expanded:bg-army-green",
+					"bg-primary text-primary-foreground [a]:hover:bg-primary/80 enabled:hover:bg-primary/80 aria-expanded:bg-primary",
 				outline:
 					"border-border bg-background hover:bg-muted hover:text-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50 aria-expanded:bg-muted aria-expanded:text-foreground",
 				secondary:
@@ -39,12 +39,12 @@ const buttonVariants = cva(
 	},
 );
 
-function Button({
+const Button = ({
 	className,
 	variant = "default",
 	size = "default",
 	...props
-}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) {
+}: ButtonPrimitive.Props & VariantProps<typeof buttonVariants>) => {
 	return (
 		<ButtonPrimitive
 			data-slot="button"
@@ -52,6 +52,27 @@ function Button({
 			{...props}
 		/>
 	);
+};
+
+interface ButtonLinkProps
+	extends React.ComponentProps<typeof Link>,
+		VariantProps<typeof buttonVariants> {
+	children: React.ReactNode;
 }
 
-export { Button, buttonVariants };
+const ButtonLink = ({
+	className,
+	variant = "default",
+	size = "default",
+	...props
+}: ButtonLinkProps) => {
+	return (
+		<Link
+			data-slot="button-link"
+			className={cn(buttonVariants({ variant, size, className }))}
+			{...props}
+		/>
+	);
+};
+
+export { Button, ButtonLink, buttonVariants };

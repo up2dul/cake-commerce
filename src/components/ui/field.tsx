@@ -129,7 +129,10 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
-function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
+function FieldDescription({
+	className,
+	...props
+}: React.ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="field-description"

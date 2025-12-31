@@ -15,15 +15,22 @@ export default function Home() {
 			<section
 				className={cn(
 					"h-160 pt-19 section-px md:pt-18 md:h-172 lg:h-180",
-					"relative text-white bg-cover bg-center bg-no-repeat",
+					"relative text-white",
 				)}
-				style={{ backgroundImage: `url(${HeroBannerImage.src})` }}
 			>
+				<Image
+					src={HeroBannerImage.src}
+					alt="Hero Banner"
+					className="absolute inset-0 w-full h-full object-cover"
+					fetchPriority="high"
+					fill
+				/>
+
 				{/* Shadow overlay at top */}
 				<div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-black/60 to-transparent" />
 
 				{/* Shadow overlay at bottom (only on mobile) */}
-				<div className="block md:hidden absolute inset-x-0 bottom-0 h-48 bg-linear-to-t from-black/40 to-transparent" />
+				<div className="block md:hidden absolute inset-x-0 bottom-0 h-56 bg-linear-to-t from-black/80 to-transparent" />
 
 				{/* Oval blur backdrop behind text (only on >= md) */}
 				<div
@@ -34,7 +41,7 @@ export default function Home() {
 				<h1
 					className={cn(
 						"font-bold text-xl md:text-2xl lg:text-[30px]",
-						"absolute bottom-10 md:right-46.5 md:bottom-20 lg:bottom-26",
+						"absolute z-2 bottom-10 md:right-46.5 md:bottom-20 lg:bottom-26",
 						"max-w-75 md:max-w-96 lg:max-w-103.25",
 					)}
 				>

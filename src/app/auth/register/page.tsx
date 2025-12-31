@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input, PasswordInput } from "@/components/ui/input";
 
@@ -61,6 +62,15 @@ export default function Register() {
 								autoComplete="off"
 								placeholder="Enter last name"
 							/>
+						</Field>
+
+						<Field className="col-span-2">
+							<div className="flex gap-2">
+								<Checkbox id="subscribe" />
+								<FieldLabel htmlFor="subscribe">
+									Send me latest info & promotions about Union Bakery
+								</FieldLabel>
+							</div>
 						</Field>
 					</div>
 

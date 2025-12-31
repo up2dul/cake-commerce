@@ -14,14 +14,14 @@ export default function Home() {
 			{/* Hero banner */}
 			<section
 				className={cn(
-					"h-160 pt-19 section-px md:pt-18 md:h-172 lg:h-180",
-					"relative text-white",
+					"h-svh pt-19 section-px md:pt-18 md:h-172 lg:h-180",
+					"relative text-white overflow-hidden",
 				)}
 			>
 				<Image
 					src={HeroBannerImage.src}
 					alt="Hero Banner"
-					className="absolute inset-0 w-full h-full object-cover"
+					className="h-full object-cover"
 					fetchPriority="high"
 					fill
 				/>

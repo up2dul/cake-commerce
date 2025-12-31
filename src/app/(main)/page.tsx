@@ -56,7 +56,7 @@ export default function Home() {
 
 					<Link
 						href="/shop"
-						className="hidden font-bold text-sm text-army-green hover:text-darker-green md:block"
+						className="hidden font-bold text-sm text-army-green hover:text-army-green/80 md:block"
 					>
 						SHOP NOW
 					</Link>
@@ -67,6 +67,7 @@ export default function Home() {
 						"mt-6 overflow-x-auto px-1 py-2",
 						"flex gap-4 lg:gap-6",
 						"md:grid grid-cols-3",
+						"snap-x snap-mandatory [&>li]:snap-center",
 					)}
 				>
 					<li className="min-w-[288px] md:min-w-auto">

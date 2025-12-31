@@ -35,11 +35,25 @@ export const Footer = () => {
 					>
 						<li>
 							WA.
-							<Link href="#"> (+62)882 1157 3980</Link>
+							<Link
+								href="https://api.whatsapp.com/send?phone=6288211573980"
+								aria-label="WhatsApp Contact of Union Bakery"
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								{" "}
+								(+62)882 1157 3980
+							</Link>
 						</li>
 						<li>
 							E.
-							<Link href="/group-order"> BAKERY@UNIONJKT.COM</Link>
+							<Link
+								href="mailto:bakery@unionjkt.com"
+								aria-label="Email of Union Bakery"
+							>
+								{" "}
+								BAKERY@UNIONJKT.COM
+							</Link>
 						</li>
 					</ul>
 				</li>
@@ -53,13 +67,34 @@ export const Footer = () => {
 						)}
 					>
 						<li>
-							<Link href="#">@UNIONJKT</Link>
+							<Link
+								href="https://www.instagram.com/unionjkt"
+								aria-label="Instagram of Union Bakery"
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								@UNIONJKT
+							</Link>
 						</li>
 						<li>
-							<Link href="/group-order">@UNION.SBY</Link>
+							<Link
+								href="https://www.instagram.com/union.sby"
+								aria-label="Instagram of Union Bakery Surabaya"
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								@UNION.SBY
+							</Link>
 						</li>
 						<li>
-							<Link href="/group-order">WhatsApp</Link>
+							<Link
+								href="https://api.whatsapp.com/send?phone=6288211573980"
+								aria-label="WhatsApp Contact of Union Bakery"
+								target="_blank"
+								rel="noreferrer noopener"
+							>
+								WhatsApp
+							</Link>
 						</li>
 					</ul>
 				</li>
@@ -73,10 +108,10 @@ export const Footer = () => {
 						)}
 					>
 						<li>
-							<Link href="#">TERMS OF SERVICE</Link>
+							<Link href="/terms-of-service">TERMS OF SERVICE</Link>
 						</li>
 						<li>
-							<Link href="/group-order">PRIVACY POLICY</Link>
+							<Link href="/privacy-policy">PRIVACY POLICY</Link>
 						</li>
 					</ul>
 				</li>

@@ -8,7 +8,7 @@ export const QuantityChanger = () => {
 	return (
 		<div
 			className={cn(
-				"sticky bottom-0 h-25 w-screen -mx-4 py-6 px-4 md:w-full md:mx-0",
+				"sticky bottom-0 h-25 w-full py-6 px-4",
 				"flex items-center justify-between gap-2 md:gap-4",
 				"bg-white border border-raisin-black border-b-0",
 			)}

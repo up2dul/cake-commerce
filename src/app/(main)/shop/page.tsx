@@ -1,4 +1,4 @@
-import { ProductCard } from "@/components/common/product-card";
+import { ProductCard } from "@/app/(main)/_components/product-card";
 
 export default function Shop() {
 	return (

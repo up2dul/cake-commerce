@@ -11,17 +11,13 @@ async function ProductList() {
 	const products = await getProductList();
 
 	return (
-		<>
-			<pre>{JSON.stringify(products, null, 2)}</pre>
-			{}
-			<ul className="grid grid-cols-2 gap-y-6 gap-x-4 md:grid-cols-3 lg:grid-cols-4 md:gap-x-6 md:gap-y-10">
-				{products.map(product => (
-					<li key={product.id}>
-						<ProductCard product={product} />
-					</li>
-				))}
-			</ul>
-		</>
+		<ul className="grid grid-cols-2 gap-y-6 gap-x-4 md:grid-cols-3 lg:grid-cols-4 md:gap-x-6 md:gap-y-10">
+			{products.map(product => (
+				<li key={product.id}>
+					<ProductCard product={product} />
+				</li>
+			))}
+		</ul>
 	);
 }
 

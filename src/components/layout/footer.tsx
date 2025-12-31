@@ -6,7 +6,7 @@ export const Footer = () => {
 		<footer className="bg-raisin-black text-white text-sm">
 			<ul className="section-px py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 				<li>
-					<span className="text-xs">UNION BAKERY</span>
+					<span className="text-xs text-white/60">UNION BAKERY</span>
 					<ul
 						className={cn(
 							"mt-4 flex flex-col gap-2",
@@ -26,7 +26,7 @@ export const Footer = () => {
 				</li>
 
 				<li>
-					<span className="text-xs">GET IN TOUCH</span>
+					<span className="text-xs text-white/60">GET IN TOUCH</span>
 					<ul
 						className={cn(
 							"mt-4 flex flex-col gap-2",
@@ -45,7 +45,7 @@ export const Footer = () => {
 				</li>
 
 				<li>
-					<span className="text-xs">CONNECT WITH US</span>
+					<span className="text-xs text-white/60">CONNECT WITH US</span>
 					<ul
 						className={cn(
 							"mt-4 flex flex-col gap-2",
@@ -65,7 +65,7 @@ export const Footer = () => {
 				</li>
 
 				<li>
-					<span className="text-xs">LINKS</span>
+					<span className="text-xs text-white/60">LINKS</span>
 					<ul
 						className={cn(
 							"mt-4 flex flex-col gap-2",
@@ -82,9 +82,8 @@ export const Footer = () => {
 				</li>
 			</ul>
 
-			<div className="section-px py-4 flex flex-col gap-1.5 border-t border-white/20 font-medium text-xs md:flex-row">
+			<div className="section-px py-4 border-t border-white/20 font-medium text-xs text-white/70">
 				<span>© 2024 The Union Group. All rights reserved.</span>
-				<span>Site by Antikode.</span>
 			</div>
 		</footer>
 	);

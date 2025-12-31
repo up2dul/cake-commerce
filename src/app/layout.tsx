@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Montserrat, Rozha_One } from "next/font/google";
 import "./globals.css";
-import { BaseLayout } from "@/components/layout/base-layout";
+import BgPattern from "@/assets/bg-pattern.webp";
 import { cn } from "@/lib/utils";
 
 const montserrat = Montserrat({
@@ -41,8 +41,13 @@ export default function RootLayout({
 					ebGaramond.variable,
 					"antialiased",
 				)}
+				style={{
+					backgroundImage: `url(${BgPattern.src})`,
+					backgroundPosition: "center",
+					backgroundRepeat: "repeat",
+				}}
 			>
-				<BaseLayout>{children}</BaseLayout>
+				{children}
 			</body>
 		</html>
 	);

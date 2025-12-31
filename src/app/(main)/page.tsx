@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ProductCard } from "@/app/(main)/_components/product-card";
 import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import GroupOrderSectionImage from "@/assets/home_group-order.webp";
 import HeroBannerImage from "@/assets/home_hero-banner.webp";
 import HighlightSectionImage from "@/assets/home_highlight.webp";
-import { ProductCard } from "@/components/common/product-card";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 

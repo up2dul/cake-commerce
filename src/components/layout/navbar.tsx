@@ -124,29 +124,32 @@ export const Navbar = () => {
 								className="float-right hover:text-slate-300"
 								onClick={() => setIsMenuOpen(false)}
 							>
-								<XIcon size={32} />
+								<XIcon size={32} weight="bold" />
 							</button>
 
 							<ul
 								className={cn(
 									"h-full flex flex-col items-center justify-center gap-6",
-									"font-bold text-3xl [&>li>a]:hover:text-slate-400 [&>li>button]:hover:text-slate-400 sm:text-4xl",
+									"font-bold uppercase text-3xl [&>li>a]:hover:text-slate-400 [&>li>button]:hover:text-slate-400 sm:text-4xl",
 								)}
 							>
 								<li>
-									<Link href="/shop">SHOP</Link>
+									<Link href="/">Home</Link>
 								</li>
 								<li>
-									<Link href="/group-order">GROUP ORDER</Link>
+									<Link href="/shop">Shop</Link>
+								</li>
+								<li>
+									<Link href="/group-order">Group Order</Link>
 								</li>
 								<li>
 									<Link href="/faq">FAQ</Link>
 								</li>
 								<li>
-									<button type="button">CART</button>
+									<button type="button">Cart</button>
 								</li>
 								<li>
-									<Link href="/auth/login">ACCOUNT</Link>
+									<Link href="/auth/login">Account</Link>
 								</li>
 							</ul>
 						</motion.aside>

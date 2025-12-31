@@ -1,10 +1,8 @@
-import { MinusCircleIcon, PlusCircleIcon } from "@phosphor-icons/react/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { Tag } from "@/components/ui/tag";
-import { cn } from "@/lib/utils";
 import { CakeWording, GreetingCard } from "./_components/optional-checkbox";
+import { QuantityChanger } from "./_components/quantity-changer";
 import { VariantButton } from "./_components/variant-button";
 
 const tncList = [
@@ -103,35 +101,7 @@ export default function ProductDetail() {
 					</section>
 
 					{/* Quantity */}
-					<div
-						className={cn(
-							"sticky bottom-0 h-25 w-full py-6 px-4 bg-white border border-raisin-black",
-							"flex items-center justify-between gap-2 md:gap-4",
-						)}
-					>
-						<div>
-							<span className="font-medium text-xs md:text-sm">QUANTITY</span>
-							<div className="mt-3 flex items-center gap-4 md:gap-6">
-								<button type="button">
-									<MinusCircleIcon
-										size={24}
-										weight="thin"
-										className="md:size-8"
-									/>
-								</button>
-								<span className="font-rozha-one text-xl md:text-2xl">1</span>
-								<button type="button">
-									<PlusCircleIcon
-										size={24}
-										weight="thin"
-										className="md:size-8"
-									/>
-								</button>
-							</div>
-						</div>
-
-						<Button size="lg">ADD TO CART</Button>
-					</div>
+					<QuantityChanger />
 				</div>
 			</div>
 		</>

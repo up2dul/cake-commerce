@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
 	useKeyPressEvent,
 	useLockBodyScroll,
@@ -24,6 +24,11 @@ export const Navbar = () => {
 	const isHomePage = pathname === "/";
 	const { y } = useWindowScroll();
 	const isTopHomePage = isHomePage && y < 100;
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: pathname is necessary due to the route change
+	useEffect(() => {
+		setIsMenuOpen(false);
+	}, [pathname]);
 
 	return (
 		<>
@@ -97,7 +102,10 @@ export const Navbar = () => {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						transition={{ duration: 0.3 }}
+						transition={{
+							duration: 0.5,
+							ease: "backInOut",
+						}}
 					>
 						<motion.aside
 							className={cn(
@@ -122,7 +130,7 @@ export const Navbar = () => {
 							<ul
 								className={cn(
 									"h-full flex flex-col items-center justify-center gap-6",
-									"text-3xl [&>li>a]:hover:text-slate-400 [&>li>button]:hover:text-slate-400 sm:text-4xl",
+									"font-bold text-3xl [&>li>a]:hover:text-slate-400 [&>li>button]:hover:text-slate-400 sm:text-4xl",
 								)}
 							>
 								<li>

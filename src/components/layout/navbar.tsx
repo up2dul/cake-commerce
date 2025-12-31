@@ -68,7 +68,7 @@ export const Navbar = () => {
 				<div
 					className={cn(
 						"hidden items-center gap-5 font-bold lg:gap-6 md:flex",
-						"text-xs uppercase [&>ul>li>a]:hover:text-slate-300",
+						"text-sm [&>ul>li>a]:hover:text-slate-300",
 					)}
 				>
 					<ul className="flex items-center gap-5 lg:gap-6">
@@ -85,7 +85,9 @@ export const Navbar = () => {
 					<span>•</span>
 					<ul className="flex items-center gap-5 lg:gap-6">
 						<li>
-							<Link href="/cart">CART</Link>
+							<button type="button" aria-label="Open cart">
+								CART
+							</button>
 						</li>
 						<li>
 							<Link href="/auth/login">ACCOUNT</Link>
@@ -146,7 +148,9 @@ export const Navbar = () => {
 									<Link href="/faq">FAQ</Link>
 								</li>
 								<li>
-									<button type="button">CART</button>
+									<button type="button" aria-label="Open cart">
+										CART
+									</button>
 								</li>
 								<li>
 									<Link href="/auth/login">ACCOUNT</Link>

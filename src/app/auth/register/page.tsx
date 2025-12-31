@@ -37,7 +37,7 @@ export default function Register() {
 							<FieldLabel htmlFor="password">CREATE PASSWORD</FieldLabel>
 							<PasswordInput
 								id="password"
-								autoComplete="off"
+								autoComplete="new-password"
 								placeholder="Enter password"
 							/>
 							<FieldDescription>

@@ -30,7 +30,7 @@ export default function Login() {
 						<FieldLabel htmlFor="password">PASSWORD</FieldLabel>
 						<PasswordInput
 							id="password"
-							autoComplete="off"
+							autoComplete="current-password"
 							placeholder="Enter password"
 						/>
 					</Field>

@@ -1,16 +1,14 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import { Tag } from "@/components/ui/tag";
+import {
+	formatDetailProductPrice,
+	getDetailProductImageUrl,
+	getProductBySlug,
+} from "@/lib/data/product";
+import { Breadcrumb } from "./_components/breadcrumb";
 import { CakeWording, GreetingCard } from "./_components/optional-checkbox";
 import { QuantityChanger } from "./_components/quantity-changer";
 import { VariantButton } from "./_components/variant-button";
-
-export const metadata: Metadata = {
-	title: "Product Details | Cake Commerce",
-	description:
-		"View detailed information about our delicious cakes and place your order.",
-};
 
 const tncList = [
 	"Please allow up to 2 hours for preparation before dispatch.",
@@ -20,28 +18,40 @@ const tncList = [
 	"Cancellations may be accommodated for orders that have not yet been dispatched or scheduled for same-day delivery. Please allow up to 14 working days for therefund process",
 ];
 
-export default function ProductDetail() {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ slug: string }>;
+}) {
+	const { slug } = await params;
+	const product = await getProductBySlug(slug);
+
+	return {
+		title: `${product.title} | Cake Commerce`,
+		description: product.description || "Shop our delicious cakes",
+	};
+}
+
+export default async function ProductDetail({
+	params,
+}: {
+	params: Promise<{ slug: string }>;
+}) {
+	const { slug } = await params;
+	const product = await getProductBySlug(slug);
+	const previewImage = getDetailProductImageUrl(product);
+	const altImage = product.images?.nodes[0].altText || product.title;
+	const price = formatDetailProductPrice(product);
+
 	return (
 		<>
-			<div className="section-px hidden w-full py-3 bg-darker-green md:block">
-				<ul className="flex items-center gap-4.5 uppercase font-bold text-xs text-white [&>li>a]:hover:text-slate-300">
-					<li>
-						<Link href="/">HOME</Link>
-					</li>
-					<li>•</li>
-					<li>
-						<Link href="/shop">SHOP</Link>
-					</li>
-					<li>•</li>
-					<li>RED VELVET CAKE</li>
-				</ul>
-			</div>
+			<Breadcrumb title={product.title} />
 
 			<div className="flex flex-col md:flex-row">
 				<section className="aspect-square w-full h-90 relative md:size-96 lg:size-120 xl:size-177">
 					<Image
-						src="https://cdn.shopify.com/s/files/1/0745/6371/5346/files/RedVelvetPie.jpg?v=1766363474"
-						alt="Red Velvet Cake"
+						src={previewImage}
+						alt={altImage}
 						className="object-cover w-full h-full"
 						fill
 					/>
@@ -53,15 +63,15 @@ export default function ProductDetail() {
 
 						<div className="mt-5.5 flex items-center justify-between gap-2 md:mt-8">
 							<h1 className="font-bold text-[22px] md:text-2xl">
-								RED VELVET CAKE
+								{product.title}
 							</h1>
 							<h2 className="font-rozha-one text-philippine-brown text-2xl/8 md:text-[30px]">
-								900
+								{price}
 							</h2>
 						</div>
 
 						<p className="mt-2 text-raisin-black text-[13px] md:text-sm">
-							Red velvet sponge, cream cheese, nougat, rum
+							{product.description}
 						</p>
 					</section>
 
@@ -69,18 +79,11 @@ export default function ProductDetail() {
 						<h2 className="font-semibold text-sm md:text-base">CAKE SIZE</h2>
 
 						<ul className="mt-3 grid gap-4 grid-cols-2 xl:grid-cols-4">
-							<li>
-								<VariantButton />
-							</li>
-							<li>
-								<VariantButton />
-							</li>
-							<li>
-								<VariantButton />
-							</li>
-							<li>
-								<VariantButton />
-							</li>
+							{product.variants.nodes.map(variant => (
+								<li key={variant.id}>
+									<VariantButton variant={variant} />
+								</li>
+							))}
 						</ul>
 					</section>
 

@@ -56,7 +56,7 @@ export default function Home() {
 
 					<Link
 						href="/shop"
-						className="hidden font-bold text-sm text-army-green hover:text-darker-green md:block"
+						className="hidden font-bold text-sm text-army-green hover:text-army-green/80 md:block"
 					>
 						SHOP NOW
 					</Link>

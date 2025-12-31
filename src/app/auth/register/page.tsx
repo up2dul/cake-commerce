@@ -68,7 +68,7 @@ export default function Register() {
 							/>
 						</Field>
 
-						<Field className="col-span-2" orientation="horizontal">
+						<Field className="col-span-2 gap-2" orientation="horizontal">
 							<Checkbox id="subscribe" />
 							<FieldLabel htmlFor="subscribe">
 								Send me latest info & promotions about Union Bakery
@@ -80,7 +80,7 @@ export default function Register() {
 						<Button type="submit" size="lg" className="w-full">
 							REGISTER
 						</Button>
-						<p className="mt-6 text-center text-sm">
+						<p className="mt-6 text-center text-sm text-balance">
 							By signing up, you agree to our{" "}
 							<Link
 								href="/terms-of-service"

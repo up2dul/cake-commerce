@@ -5,7 +5,7 @@ import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import GroupOrderSectionImage from "@/assets/home_group-order.webp";
 import HeroBannerImage from "@/assets/home_hero-banner.webp";
 import HighlightSectionImage from "@/assets/home_highlight.webp";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -87,6 +87,10 @@ export default function Home() {
 						<ProductCard />
 					</li>
 				</ul>
+
+				<ButtonLink href="/shop" className="mt-6 w-full md:hidden">
+					SHOP NOW
+				</ButtonLink>
 			</section>
 
 			{/* Highlight */}

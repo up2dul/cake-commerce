@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { EB_Garamond, Montserrat, Rozha_One } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
+import NextTopLoader from "nextjs-toploader";
 import BgPattern from "@/assets/bg-pattern.webp";
 import { cn } from "@/lib/utils";
 
@@ -48,6 +49,7 @@ export default function RootLayout({
 					backgroundRepeat: "repeat",
 				}}
 			>
+				<NextTopLoader color="oklch(60% 0.118 184.704)" />
 				<ReactLenis root />
 				{children}
 			</body>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
@@ -5,6 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 import { Input, PasswordInput } from "@/components/ui/input";
+
+export const metadata: Metadata = {
+	title: "Register | Cake Commerce",
+	description:
+		"Create a new Cake Commerce account for a seamless checkout experience.",
+};
 
 export default function Register() {
 	return (

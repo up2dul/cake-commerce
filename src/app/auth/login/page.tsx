@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import { Button, ButtonLink } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input, PasswordInput } from "@/components/ui/input";
+
+export const metadata: Metadata = {
+	title: "Login | Cake Commerce",
+	description:
+		"Log in to your Cake Commerce account to access your orders and profile.",
+};
 
 export default function Login() {
 	return (

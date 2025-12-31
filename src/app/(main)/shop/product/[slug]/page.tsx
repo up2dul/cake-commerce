@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { Tag } from "@/components/ui/tag";
 import { CakeWording, GreetingCard } from "./_components/optional-checkbox";
 import { QuantityChanger } from "./_components/quantity-changer";
 import { VariantButton } from "./_components/variant-button";
+
+export const metadata: Metadata = {
+	title: "Product Details | Cake Commerce",
+	description:
+		"View detailed information about our delicious cakes and place your order.",
+};
 
 const tncList = [
 	"Please allow up to 2 hours for preparation before dispatch.",

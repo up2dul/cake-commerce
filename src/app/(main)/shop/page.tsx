@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { ProductCard } from "@/app/(main)/_components/product-card";
+
+export const metadata: Metadata = {
+	title: "Shop | Cake Commerce",
+	description: "Browse our handcrafted signature cakes and delicious treats.",
+};
 
 export default function Shop() {
 	return (

@@ -46,11 +46,11 @@ export const Navbar = () => {
 				</Link>
 
 				{/* Mobile button */}
-				<div className="flex items-center gap-3">
+				<div className="flex items-center gap-3 sm:gap-6">
 					<button
 						type="button"
 						aria-label="Open cart"
-						className="font-medium text-xs hover:text-slate-300 md:hidden"
+						className="font-medium text-xs hover:text-slate-300 sm:text-sm md:hidden"
 					>
 						CART
 					</button>

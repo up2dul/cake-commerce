@@ -23,7 +23,7 @@ export default function Login() {
 				<form className="mt-8">
 					<Field>
 						<FieldLabel htmlFor="email">EMAIL</FieldLabel>
-						<Input id="email" autoComplete="off" placeholder="Enter email" />
+						<Input id="email" autoComplete="email" placeholder="Enter email" />
 					</Field>
 
 					<Field className="mt-6">

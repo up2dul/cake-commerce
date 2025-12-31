@@ -26,7 +26,11 @@ export default function Register() {
 					<div className="mb-8 grid grid-cols-2 gap-y-6 gap-x-4">
 						<Field className="col-span-2">
 							<FieldLabel htmlFor="email">EMAIL</FieldLabel>
-							<Input id="email" autoComplete="off" placeholder="Enter email" />
+							<Input
+								id="email"
+								autoComplete="email"
+								placeholder="Enter email"
+							/>
 						</Field>
 
 						<Field className="col-span-2">

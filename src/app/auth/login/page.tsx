@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import { Button, ButtonLink } from "@/components/ui/button";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input, PasswordInput } from "@/components/ui/input";
 
 export default function Login() {
 	return (
@@ -19,7 +21,28 @@ export default function Login() {
 				</p>
 
 				<form className="mt-8">
-					<Button type="submit" size="lg" className="w-full">
+					<Field>
+						<FieldLabel htmlFor="email">EMAIL</FieldLabel>
+						<Input id="email" autoComplete="off" placeholder="Enter email" />
+					</Field>
+
+					<Field className="mt-6">
+						<FieldLabel htmlFor="password">PASSWORD</FieldLabel>
+						<PasswordInput
+							id="password"
+							autoComplete="off"
+							placeholder="Enter password"
+						/>
+					</Field>
+
+					<Link
+						href="/auth/forgot-password"
+						className="mt-4 float-right font-bold text-sm text-army-green hover:text-army-green/80"
+					>
+						FORGOT PASSWORD
+					</Link>
+
+					<Button type="submit" size="lg" className="mt-8 w-full">
 						LOGIN
 					</Button>
 				</form>

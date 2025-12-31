@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { EB_Garamond, Montserrat, Rozha_One } from "next/font/google";
 import "./globals.css";
+import ReactLenis from "lenis/react";
 import BgPattern from "@/assets/bg-pattern.webp";
 import { cn } from "@/lib/utils";
 
@@ -47,6 +48,7 @@ export default function RootLayout({
 					backgroundRepeat: "repeat",
 				}}
 			>
+				<ReactLenis root />
 				{children}
 			</body>
 		</html>

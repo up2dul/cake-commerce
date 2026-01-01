@@ -3,10 +3,12 @@ import { cn } from "@/lib/utils";
 
 type VariantButtonProps = {
 	variant: ProductVariant;
+	onClick: () => void;
 	isSelected?: boolean;
 };
 export const VariantButton = ({
 	variant,
+	onClick,
 	isSelected = false,
 }: VariantButtonProps) => {
 	return (
@@ -19,6 +21,7 @@ export const VariantButton = ({
 				"w-full h-20 border border-[#333]/60 border-dashed disabled:cursor-not-allowed enabled:hover:bg-army-green/5",
 				isSelected && "border-2 border-army-green border-solid",
 			)}
+			onClick={onClick}
 		>
 			<span className="font-rozha-one text-[32px]/6 text-philippine-brown group-disabled:text-philippine-brown/70">
 				{variant.title}

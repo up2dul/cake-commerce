@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
 	},
 	experimental: {
 		optimizePackageImports: ["@phosphor-icons/react"],
+		typedEnv: true,
 	},
 };
 

@@ -5,8 +5,30 @@ import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
 import GroupOrderSectionImage from "@/assets/home_group-order.webp";
 import HeroBannerImage from "@/assets/home_hero-banner.webp";
 import HighlightSectionImage from "@/assets/home_highlight.webp";
-import { Button, ButtonLink } from "@/components/ui/button";
+import { ButtonLink } from "@/components/ui/button";
+import { getProductList } from "@/lib/data/product";
 import { cn } from "@/lib/utils";
+
+async function ProductList() {
+	const products = await getProductList();
+
+	return (
+		<ul
+			className={cn(
+				"mt-6 overflow-x-auto px-1 py-2",
+				"flex gap-4 lg:gap-6",
+				"md:grid grid-cols-3",
+				"snap-x snap-mandatory [&>li]:snap-center",
+			)}
+		>
+			{products.splice(0, 3).map(product => (
+				<li key={product.id} className="min-w-[288px] md:min-w-auto">
+					<ProductCard product={product} />
+				</li>
+			))}
+		</ul>
+	);
+}
 
 export default function Home() {
 	return (
@@ -69,24 +91,7 @@ export default function Home() {
 					</Link>
 				</div>
 
-				<ul
-					className={cn(
-						"mt-6 overflow-x-auto px-1 py-2",
-						"flex gap-4 lg:gap-6",
-						"md:grid grid-cols-3",
-						"snap-x snap-mandatory [&>li]:snap-center",
-					)}
-				>
-					<li className="min-w-[288px] md:min-w-auto">
-						<ProductCard />
-					</li>
-					<li className="min-w-[288px] md:min-w-auto">
-						<ProductCard />
-					</li>
-					<li className="min-w-[288px] md:min-w-auto">
-						<ProductCard />
-					</li>
-				</ul>
+				<ProductList />
 
 				<ButtonLink href="/shop" className="mt-6 w-full md:hidden">
 					SHOP NOW
@@ -126,7 +131,9 @@ export default function Home() {
 						our cakes are sure to impress. We offer a variety of sizes to suit
 						any occasion.
 					</p>
-					<Button className="mt-2 self-start">DISCOVER MORE</Button>
+					<ButtonLink href="/group-order" className="mt-2 self-start">
+						DISCOVER MORE
+					</ButtonLink>
 				</div>
 
 				<div className="h-65.5 relative w-full bg-cover bg-center bg-no-repeat md:w-167 md:h-133.5">

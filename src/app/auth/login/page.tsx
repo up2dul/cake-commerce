@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import LogoImage from "@/assets/cake-commerce-logo-dark.svg";
-import { Button, ButtonLink } from "@/components/ui/button";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Input, PasswordInput } from "@/components/ui/input";
+import { ButtonLink } from "@/components/ui/button";
+import { LoginForm } from "./_components/login-form";
 
 export const metadata: Metadata = {
 	title: "Login | Cake Commerce",
@@ -27,32 +26,7 @@ export default function Login() {
 					If you already have an account, please log in to continue
 				</p>
 
-				<form className="mt-8">
-					<Field>
-						<FieldLabel htmlFor="email">EMAIL</FieldLabel>
-						<Input id="email" autoComplete="email" placeholder="Enter email" />
-					</Field>
-
-					<Field className="mt-6">
-						<FieldLabel htmlFor="password">PASSWORD</FieldLabel>
-						<PasswordInput
-							id="password"
-							autoComplete="current-password"
-							placeholder="Enter password"
-						/>
-					</Field>
-
-					<Link
-						href="/auth/forgot-password"
-						className="mt-4 float-right font-bold text-sm text-army-green hover:text-army-green/80"
-					>
-						FORGOT PASSWORD
-					</Link>
-
-					<Button type="submit" size="lg" className="mt-8 w-full">
-						LOGIN
-					</Button>
-				</form>
+				<LoginForm />
 			</section>
 
 			<section className="mt-8 mb-10 mx-auto p-8 bg-white w-full md:mb-20 sm:w-4/5 md:w-3/5 lg:w-157">

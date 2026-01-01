@@ -68,7 +68,7 @@ export default function NotFound() {
 						</li>
 						<li>
 							<Link
-								href="/auth/login"
+								href="/account"
 								className="text-army-green font-bold hover:text-army-green/80 px-2 py-1 text-sm"
 							>
 								MY ACCOUNT

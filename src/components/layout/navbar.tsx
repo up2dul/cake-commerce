@@ -90,7 +90,7 @@ export const Navbar = () => {
 							</button>
 						</li>
 						<li>
-							<Link href="/auth/login">ACCOUNT</Link>
+							<Link href="/account">ACCOUNT</Link>
 						</li>
 					</ul>
 				</div>
@@ -153,7 +153,7 @@ export const Navbar = () => {
 									</button>
 								</li>
 								<li>
-									<Link href="/auth/login">ACCOUNT</Link>
+									<Link href="/account">ACCOUNT</Link>
 								</li>
 							</ul>
 						</motion.aside>

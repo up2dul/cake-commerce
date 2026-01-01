@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import {
+	CakeWording,
+	GreetingCard,
+} from "@/components/common/optional-checkbox";
 import { Tag } from "@/components/ui/tag";
 import type { ProductDetail } from "@/lib/types/product";
 import { format3Digit } from "@/lib/utils";
-import { CakeWording, GreetingCard } from "./optional-checkbox";
 import { QuantityChanger } from "./quantity-changer";
 import { VariantButton } from "./variant-button";
 

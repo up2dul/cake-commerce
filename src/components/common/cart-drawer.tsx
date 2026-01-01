@@ -2,16 +2,82 @@
 
 import { XIcon } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
+import { useState } from "react";
 import { useLockBodyScroll } from "react-use";
+import { toast } from "sonner";
+import { removeFromCartAction } from "@/app/actions/cart";
 import BgPattern from "@/assets/bg-pattern.webp";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/store/cart";
+import type { CartLine } from "@/lib/types/cart";
 import { cn, format3Digit } from "@/lib/utils";
 import { CartItemCard } from "./cart-item-card";
+import { CartLineEdit } from "./cart-line-edit";
 
 export const CartDrawer = () => {
-	const { isOpen, setIsOpen, lines, subtotal } = useCart();
+	const { isOpen, setIsOpen, lines, subtotal, cartId, updateCart } = useCart();
+	const [editingLine, setEditingLine] = useState<CartLine | null>(null);
+	const [isRemoving, setIsRemoving] = useState(false);
+
 	useLockBodyScroll(isOpen);
+
+	const handleRemove = async (lineId: string) => {
+		if (!cartId) return;
+
+		setIsRemoving(true);
+		try {
+			const updatedCart = await removeFromCartAction(cartId, lineId);
+			updateCart(updatedCart);
+		} catch (error) {
+			console.error("Failed to remove item:", error);
+			toast.error("Failed to remove item. Please try again.");
+		} finally {
+			setIsRemoving(false);
+		}
+	};
+
+	if (editingLine && cartId) {
+		return (
+			<AnimatePresence>
+				{isOpen && (
+					<motion.div
+						className="fixed z-30 inset-0 bg-black/60 backdrop-blur-xs"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{
+							duration: 0.5,
+							ease: "backInOut",
+						}}
+					>
+						<motion.aside
+							className={cn(
+								"fixed right-0 top-0 bottom-0",
+								"flex flex-col",
+								"w-full h-full max-h-screen md:w-1/2 lg:w-88.5 xl:w-95.5",
+							)}
+							style={{
+								backgroundImage: `url(${BgPattern.src})`,
+								backgroundPosition: "center",
+								backgroundRepeat: "repeat",
+								backgroundSize: "120%",
+							}}
+							initial={{ x: "100%" }}
+							animate={{ x: 0 }}
+							exit={{ x: "100%" }}
+							transition={{ duration: 0.3 }}
+						>
+							<CartLineEdit
+								line={editingLine}
+								cartId={cartId}
+								onBack={() => setEditingLine(null)}
+							/>
+						</motion.aside>
+					</motion.div>
+				)}
+			</AnimatePresence>
+		);
+	}
 
 	return (
 		<AnimatePresence>
@@ -70,7 +136,11 @@ export const CartDrawer = () => {
 								<ul className="flex flex-col gap-4">
 									{lines.map(line => (
 										<li key={line.id}>
-											<CartItemCard line={line} />
+											<CartItemCard
+												line={line}
+												onEdit={setEditingLine}
+												onRemove={handleRemove}
+											/>
 										</li>
 									))}
 								</ul>
@@ -87,7 +157,7 @@ export const CartDrawer = () => {
 							<Button
 								className="w-full mt-4"
 								size="lg"
-								disabled={lines.length === 0}
+								disabled={lines.length === 0 || isRemoving}
 							>
 								CHOOSE DELIVERY TIME
 							</Button>

@@ -1,15 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import type { CartLine } from "@/lib/types/cart";
 import { format3Digit } from "@/lib/utils";
 
 interface CartItemCardProps {
 	line: CartLine;
+	onEdit: (line: CartLine) => void;
+	onRemove: (lineId: string) => Promise<void>;
 }
 
-export const CartItemCard = ({ line }: CartItemCardProps) => {
+export const CartItemCard = ({ line, onEdit, onRemove }: CartItemCardProps) => {
 	const cakeWording = line.attributes.find(
 		attr => attr.key.toLowerCase() === "cake wording",
 	)?.value;
+
+	const handleRemove = async () => {
+		await onRemove(line.id);
+	};
 
 	return (
 		<article className="flex items-start gap-4">
@@ -39,10 +47,18 @@ export const CartItemCard = ({ line }: CartItemCardProps) => {
 					<p className="font-rozha-one">{line.quantity}x</p>
 
 					<div className="flex items-center gap-3 font-semibold text-xs">
-						<button type="button" className="hover:text-army-green/80">
+						<button
+							type="button"
+							className="hover:text-army-green/80"
+							onClick={() => onEdit(line)}
+						>
 							EDIT
 						</button>
-						<button type="button" className="hover:text-army-green/80">
+						<button
+							type="button"
+							className="hover:text-army-green/80"
+							onClick={handleRemove}
+						>
 							REMOVE
 						</button>
 					</div>

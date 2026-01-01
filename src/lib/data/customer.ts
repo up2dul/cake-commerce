@@ -1,3 +1,5 @@
+import "server-only";
+
 import { fetcher } from "@/lib/api";
 import { getAuthToken } from "@/lib/auth";
 import { API_ENDPOINTS } from "@/lib/config";

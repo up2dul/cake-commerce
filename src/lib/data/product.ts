@@ -1,3 +1,5 @@
+import "server-only";
+
 import { cache } from "react";
 import { fetcher } from "@/lib/api";
 import { API_ENDPOINTS } from "@/lib/config";

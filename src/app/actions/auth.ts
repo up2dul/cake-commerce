@@ -1,4 +1,5 @@
 "use server";
+import "server-only";
 
 import { cookies } from "next/headers";
 import { redirect, unstable_rethrow } from "next/navigation";
@@ -64,7 +65,6 @@ export async function loginUser(
 	const email = formData.get("email") as string;
 	const password = formData.get("password") as string;
 
-	// Validate using Zod schema
 	const validationResult = loginSchema.safeParse({ email, password });
 
 	if (!validationResult.success) {
@@ -122,7 +122,6 @@ export async function registerUser(
 	const firstName = formData.get("firstName") as string;
 	const lastName = formData.get("lastName") as string;
 
-	// Validate using Zod schema
 	const validationResult = registerSchema.safeParse({
 		email,
 		password,

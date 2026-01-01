@@ -1,10 +1,23 @@
 "use client";
 
 import { MinusCircleIcon, PlusCircleIcon } from "@phosphor-icons/react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 export const QuantityChanger = () => {
+	const [quantity, setQuantity] = useState(1);
+
+	const handleDecrement = () => {
+		if (quantity > 1) {
+			setQuantity(prev => prev - 1);
+		}
+	};
+
+	const handleIncrement = () => {
+		setQuantity(prev => prev + 1);
+	};
+
 	return (
 		<div
 			className={cn(
@@ -16,11 +29,24 @@ export const QuantityChanger = () => {
 			<div>
 				<span className="font-medium text-xs md:text-sm">QUANTITY</span>
 				<div className="mt-3 flex items-center gap-4 md:gap-6">
-					<button type="button" className="hover:text-army-green/80">
+					<button
+						type="button"
+						aria-label="Decrement quantity"
+						className="disabled:text-army-green/80 enabled:hover:text-philippine-brown"
+						disabled={quantity <= 1}
+						onClick={handleDecrement}
+					>
 						<MinusCircleIcon size={24} weight="thin" className="md:size-8" />
 					</button>
-					<span className="font-rozha-one text-xl md:text-2xl">1</span>
-					<button type="button" className="hover:text-army-green/80">
+
+					<span className="font-rozha-one text-xl md:text-2xl">{quantity}</span>
+
+					<button
+						type="button"
+						aria-label="Increment quantity"
+						onClick={handleIncrement}
+						className="disabled:text-army-green/80 enabled:hover:text-philippine-brown"
+					>
 						<PlusCircleIcon size={24} weight="thin" className="md:size-8" />
 					</button>
 				</div>

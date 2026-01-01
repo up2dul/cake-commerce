@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { CartLine } from "@/lib/types/cart";
+import { format3Digit } from "@/lib/utils";
 
 interface CartItemCardProps {
 	line: CartLine;
@@ -7,10 +8,7 @@ interface CartItemCardProps {
 
 export const CartItemCard = ({ line }: CartItemCardProps) => {
 	const cakeWording = line.attributes.find(
-		attr => attr.key === "Cake Wording",
-	)?.value;
-	const greeting = line.attributes.find(
-		attr => attr.key === "Greetings",
+		attr => attr.key.toLowerCase() === "cake wording",
 	)?.value;
 
 	return (
@@ -26,15 +24,15 @@ export const CartItemCard = ({ line }: CartItemCardProps) => {
 
 			<div className="flex-1">
 				<div className="flex items-center justify-between gap-2">
-					<h2 className="font-semibold text-sm">{line.merchandise.id}</h2>
+					<h2 className="font-semibold text-sm">
+						{line.merchandise.product.title}
+					</h2>
 					<p className="font-rozha-one text-philippine-brown">
-						{line.merchandise.price.amount}
+						{format3Digit(line.merchandise.price.amount)}
 					</p>
 				</div>
 				<p className="mt-0.5 text-[#333]/70 text-xs">
-					{cakeWording && `${cakeWording}`}
-					{cakeWording && greeting && " • "}
-					{greeting && `${greeting}`}
+					{cakeWording && "With cake wording"}
 				</p>
 
 				<div className="mt-4 flex items-center justify-between gap-2">

@@ -6,7 +6,7 @@ import { useLockBodyScroll } from "react-use";
 import BgPattern from "@/assets/bg-pattern.webp";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/store/cart";
-import { cn } from "@/lib/utils";
+import { cn, format3Digit } from "@/lib/utils";
 import { CartItemCard } from "./cart-item-card";
 
 export const CartDrawer = () => {
@@ -30,7 +30,7 @@ export const CartDrawer = () => {
 						className={cn(
 							"fixed right-0 top-0 bottom-0",
 							"flex flex-col",
-							"w-full h-full max-h-screen overflow-y-auto md:w-1/2 lg:w-88.5 xl:w-95.5",
+							"w-full h-full max-h-screen md:w-1/2 lg:w-88.5 xl:w-95.5",
 						)}
 						style={{
 							backgroundImage: `url(${BgPattern.src})`,
@@ -81,7 +81,7 @@ export const CartDrawer = () => {
 							<div className="flex items-center justify-between">
 								<span className="font-medium text-xs">SUBTOTAL</span>
 								<span className="font-rozha-one text-philippine-brown text-xl/5">
-									{subtotal.toLocaleString()}
+									{format3Digit(subtotal)}
 								</span>
 							</div>
 							<Button

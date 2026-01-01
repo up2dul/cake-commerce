@@ -203,3 +203,9 @@ export async function registerUser(
 
 	redirect("/auth/login");
 }
+
+export async function logoutUser() {
+	const cookieStore = await cookies();
+	cookieStore.delete("authToken");
+	redirect("/");
+}

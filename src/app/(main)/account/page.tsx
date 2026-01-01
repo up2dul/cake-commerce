@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LogoutButton } from "@/app/(main)/account/_components/logout-button";
 import { getCustomer } from "@/lib/data/customer";
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default async function AccountPage() {
 
 	return (
 		<div className="min-h-[60svh] section-px py-4 max-w-2xl mx-auto">
-			<h1 className="text-2xl font-bold mb-8 md:text-3xl">ACCOUNT</h1>
+			<div className="flex items-center justify-between mb-8">
+				<h1 className="text-2xl font-bold md:text-3xl">ACCOUNT</h1>
+				<LogoutButton />
+			</div>
 
 			<section className="border border-gray-200 rounded p-6">
 				<h2 className="text-xl font-bold mb-4">PERSONAL INFORMATION</h2>

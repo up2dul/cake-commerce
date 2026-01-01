@@ -32,7 +32,7 @@ export const QuantityChanger = () => {
 					<button
 						type="button"
 						aria-label="Decrement quantity"
-						className="disabled:text-army-green/80 enabled:hover:text-philippine-brown"
+						className="rounded-full disabled:cursor-not-allowed disabled:text-army-green/80 enabled:hover:text-white enabled:hover:bg-philippine-brown"
 						disabled={quantity <= 1}
 						onClick={handleDecrement}
 					>
@@ -45,7 +45,7 @@ export const QuantityChanger = () => {
 						type="button"
 						aria-label="Increment quantity"
 						onClick={handleIncrement}
-						className="disabled:text-army-green/80 enabled:hover:text-philippine-brown"
+						className="rounded-full disabled:cursor-not-allowed disabled:text-army-green/80 enabled:hover:text-white enabled:hover:bg-philippine-brown"
 					>
 						<PlusCircleIcon size={24} weight="thin" className="md:size-8" />
 					</button>

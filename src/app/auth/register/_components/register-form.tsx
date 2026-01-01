@@ -44,6 +44,7 @@ export function RegisterForm() {
 						name="password"
 						autoComplete="new-password"
 						placeholder="Enter password"
+						minLength={8}
 						required
 						disabled={pending}
 					/>

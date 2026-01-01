@@ -1,4 +1,5 @@
 import type { CurrencyAmount, Image } from "./common";
+import type { Product } from "./product";
 
 export interface CartAttribute {
 	key: string;
@@ -10,6 +11,7 @@ export interface CartMerchandise {
 	availableForSale: boolean;
 	price: CurrencyAmount;
 	image: Image;
+	product: Product;
 }
 
 export interface CartLine {

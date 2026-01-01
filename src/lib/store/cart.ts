@@ -71,9 +71,7 @@ export const useCart = create<CartState>()(
 		{
 			name: "cake-commerce-cart",
 			storage: createJSONStorage(() => localStorage),
-			partialize: state => ({
-				cartId: state.cartId,
-			}),
+			partialize: state => state,
 		},
 	),
 );

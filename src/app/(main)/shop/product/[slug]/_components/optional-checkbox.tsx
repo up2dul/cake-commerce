@@ -4,15 +4,28 @@ import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 
-export const CakeWording = () => {
+interface CakeWordingProps {
+	value: string;
+	onChange: (value: string) => void;
+}
+
+export const CakeWording = ({ value, onChange }: CakeWordingProps) => {
 	const [isEnabled, setIsEnabled] = useState(false);
-	const [value, setValue] = useState("");
+
+	const handleToggle = () => {
+		if (!isEnabled) {
+			setIsEnabled(true);
+		} else {
+			setIsEnabled(false);
+			onChange("");
+		}
+	};
 
 	return (
 		<div>
 			<button
 				type="button"
-				onClick={() => setIsEnabled(!isEnabled)}
+				onClick={handleToggle}
 				aria-label="Add cake wording"
 				className="w-full mb-3 flex items-center justify-between group"
 			>
@@ -33,22 +46,35 @@ export const CakeWording = () => {
 					maxLength={50}
 					className="resize-none"
 					value={value}
-					onChange={e => setValue(e.target.value)}
+					onChange={e => onChange(e.target.value)}
 				/>
 			)}
 		</div>
 	);
 };
 
-export const GreetingCard = () => {
+interface GreetingCardProps {
+	value: string;
+	onChange: (value: string) => void;
+}
+
+export const GreetingCard = ({ value, onChange }: GreetingCardProps) => {
 	const [isEnabled, setIsEnabled] = useState(false);
-	const [value, setValue] = useState("");
+
+	const handleToggle = () => {
+		if (!isEnabled) {
+			setIsEnabled(true);
+		} else {
+			setIsEnabled(false);
+			onChange("");
+		}
+	};
 
 	return (
 		<div>
 			<button
 				type="button"
-				onClick={() => setIsEnabled(!isEnabled)}
+				onClick={handleToggle}
 				aria-label="Add greeting card"
 				className="w-full mb-3 flex items-center justify-between group"
 			>
@@ -69,7 +95,7 @@ export const GreetingCard = () => {
 					maxLength={100}
 					className="resize-none"
 					value={value}
-					onChange={e => setValue(e.target.value)}
+					onChange={e => onChange(e.target.value)}
 				/>
 			)}
 		</div>

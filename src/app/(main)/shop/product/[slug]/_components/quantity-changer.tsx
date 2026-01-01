@@ -2,6 +2,7 @@
 
 import { MinusCircleIcon, PlusCircleIcon } from "@phosphor-icons/react";
 import { useState } from "react";
+import { toast } from "sonner";
 import { addToCartAction } from "@/app/actions/cart";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/store/cart";
@@ -34,6 +35,7 @@ export const QuantityChanger = ({
 
 	const handleAddToCart = async () => {
 		if (!variantId) {
+			toast.error("Please select a cake variant");
 			return;
 		}
 
@@ -52,9 +54,11 @@ export const QuantityChanger = ({
 			updateCart(cart);
 
 			setQuantity(1);
+
+			toast.success("Successfully added to cart");
 		} catch (error) {
 			console.error("Failed to add to cart:", error);
-			alert("Failed to add to cart. Please try again.");
+			toast.error("Failed to add to cart. Please try again.");
 		} finally {
 			setIsLoading(false);
 		}

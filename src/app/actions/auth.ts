@@ -201,5 +201,5 @@ export async function registerUser(
 		return { message: "An unexpected error occurred" };
 	}
 
-	redirect("/");
+	redirect("/auth/login");
 }

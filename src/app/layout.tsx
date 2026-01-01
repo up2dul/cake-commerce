@@ -3,8 +3,8 @@ import { EB_Garamond, Montserrat, Rozha_One } from "next/font/google";
 import "./globals.css";
 import ReactLenis from "lenis/react";
 import NextTopLoader from "nextjs-toploader";
+import { Toaster } from "sonner";
 import BgPattern from "@/assets/bg-pattern.webp";
-import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 
 const montserrat = Montserrat({
@@ -53,7 +53,15 @@ export default function RootLayout({
 			>
 				<NextTopLoader color="oklch(60% 0.118 184.704)" />
 				<ReactLenis root />
-				<Toaster richColors position="top-center" />
+				<Toaster
+					richColors
+					position="top-center"
+					style={
+						{
+							"--border-radius": "0",
+						} as React.CSSProperties
+					}
+				/>
 				{children}
 			</body>
 		</html>

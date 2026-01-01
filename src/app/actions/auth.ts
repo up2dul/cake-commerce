@@ -2,18 +2,58 @@
 
 import { cookies } from "next/headers";
 import { redirect, unstable_rethrow } from "next/navigation";
+import { z } from "zod";
 import { ApiError, fetcher } from "@/lib/api";
 import { API_ENDPOINTS } from "@/lib/config";
 import type { AuthToken } from "@/lib/types/auth";
 
+const loginSchema = z.object({
+	email: z
+		.string({ error: "Email is required" })
+		.min(1, { error: "Email is required" })
+		.pipe(z.email({ message: "Please enter a valid email" })),
+	password: z
+		.string({ error: "Password is required" })
+		.min(1, { error: "Password is required" }),
+});
+
+const registerSchema = z.object({
+	email: z
+		.string({ error: "Email is required" })
+		.min(1, { error: "Email is required" })
+		.pipe(z.email({ message: "Please enter a valid email" })),
+	password: z
+		.string({ error: "Password is required" })
+		.min(8, { error: "Password must be at least 8 characters" })
+		.refine(val => /[A-Z]/.test(val) && /[a-z]/.test(val), {
+			message: "Password must contain uppercase and lowercase letters",
+		})
+		.refine(val => /\d/.test(val), {
+			message: "Password must contain at least one number",
+		}),
+	firstName: z
+		.string({ error: "First name is required" })
+		.min(1, { error: "First name is required" }),
+	lastName: z
+		.string({ error: "Last name is required" })
+		.min(1, { error: "Last name is required" }),
+});
+
 export interface LoginFormState {
-	errors?: {
-		email?: string[];
-		password?: string[];
-	};
+	errors?: Record<string, string[]>;
 	message?: string;
 	values?: {
 		email?: string;
+	};
+}
+
+export interface RegisterFormState {
+	errors?: Record<string, string[]>;
+	message?: string;
+	values?: {
+		email?: string;
+		firstName?: string;
+		lastName?: string;
 	};
 }
 
@@ -24,26 +64,24 @@ export async function loginUser(
 	const email = formData.get("email") as string;
 	const password = formData.get("password") as string;
 
-	const errors: LoginFormState["errors"] = {};
+	// Validate using Zod schema
+	const validationResult = loginSchema.safeParse({ email, password });
 
-	if (!email || email.trim() === "") {
-		errors.email = ["Email is required"];
-	} else if (!email.includes("@")) {
-		errors.email = ["Please enter a valid email"];
-	}
-
-	if (!password || password.trim() === "") {
-		errors.password = ["Password is required"];
-	}
-
-	if (Object.keys(errors).length > 0) {
+	if (!validationResult.success) {
+		const errors = validationResult.error.flatten().fieldErrors as Record<
+			string,
+			string[]
+		>;
 		return { errors, values: { email } };
 	}
 
 	try {
 		const response = await fetcher<AuthToken>(API_ENDPOINTS.LOGIN, {
 			method: "POST",
-			body: JSON.stringify({ email, password }),
+			body: JSON.stringify({
+				email: validationResult.data.email,
+				password: validationResult.data.password,
+			}),
 		});
 
 		const accessToken = response?.accessToken;
@@ -75,21 +113,6 @@ export async function loginUser(
 	redirect("/");
 }
 
-export interface RegisterFormState {
-	errors?: {
-		email?: string[];
-		password?: string[];
-		firstName?: string[];
-		lastName?: string[];
-	};
-	message?: string;
-	values?: {
-		email?: string;
-		firstName?: string;
-		lastName?: string;
-	};
-}
-
 export async function registerUser(
 	_prevState: RegisterFormState | undefined,
 	formData: FormData,
@@ -99,34 +122,19 @@ export async function registerUser(
 	const firstName = formData.get("firstName") as string;
 	const lastName = formData.get("lastName") as string;
 
-	// Basic validation
-	const errors: RegisterFormState["errors"] = {};
+	// Validate using Zod schema
+	const validationResult = registerSchema.safeParse({
+		email,
+		password,
+		firstName,
+		lastName,
+	});
 
-	if (!email || email.trim() === "") {
-		errors.email = ["Email is required"];
-	} else if (!email.includes("@")) {
-		errors.email = ["Please enter a valid email"];
-	}
-
-	if (!password || password.trim() === "") {
-		errors.password = ["Password is required"];
-	} else if (password.length < 8) {
-		errors.password = ["Password must be at least 8 characters"];
-	} else if (!/[A-Z]/.test(password) || !/[a-z]/.test(password)) {
-		errors.password = ["Password must contain uppercase and lowercase letters"];
-	} else if (!/\d/.test(password)) {
-		errors.password = ["Password must contain at least one number"];
-	}
-
-	if (!firstName || firstName.trim() === "") {
-		errors.firstName = ["First name is required"];
-	}
-
-	if (!lastName || lastName.trim() === "") {
-		errors.lastName = ["Last name is required"];
-	}
-
-	if (Object.keys(errors).length > 0) {
+	if (!validationResult.success) {
+		const errors = validationResult.error.flatten().fieldErrors as Record<
+			string,
+			string[]
+		>;
 		return { errors, values: { email, firstName, lastName } };
 	}
 
@@ -134,10 +142,10 @@ export async function registerUser(
 		const response = await fetcher<AuthToken>(API_ENDPOINTS.REGISTER, {
 			method: "POST",
 			body: JSON.stringify({
-				email,
-				password,
-				firstName,
-				lastName,
+				email: validationResult.data.email,
+				password: validationResult.data.password,
+				firstName: validationResult.data.firstName,
+				lastName: validationResult.data.lastName,
 			}),
 		});
 
@@ -166,17 +174,14 @@ export async function registerUser(
 			if (error.code === 3) {
 				// Field-specific errors from API
 				if (error.errors) {
-					const apiErrors: RegisterFormState["errors"] = {};
+					const apiErrors: Record<string, string[]> = {};
 					error.errors.forEach(err => {
-						const field = err.error as keyof Exclude<
-							RegisterFormState["errors"],
-							undefined
-						>;
-						if (field && field in apiErrors) {
+						const field = err.error;
+						if (field) {
 							if (!apiErrors[field]) {
 								apiErrors[field] = [];
 							}
-							(apiErrors[field] as string[]).push(err.message);
+							apiErrors[field].push(err.message);
 						}
 					});
 					if (Object.keys(apiErrors).length > 0) {

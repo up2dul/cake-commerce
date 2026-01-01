@@ -70,7 +70,7 @@ export default async function ProductDetail({
 							</h2>
 						</div>
 
-						<p className="mt-2 text-raisin-black text-[13px] md:text-sm">
+						<p className="mt-2 text-raisin-black/70 text-[13px] md:text-sm">
 							{product.description}
 						</p>
 					</section>
@@ -98,12 +98,12 @@ export default async function ProductDetail({
 						</ul>
 					</section>
 
-					<section className="mt-6 mb-12 text-raisin-black md:mb-15">
+					<section className="mt-6 mb-12 md:mb-15">
 						<h2 className="font-semibold text-sm md:text-base">
 							TERMS & CONDITIONS
 						</h2>
 
-						<ul className="mt-2 ml-4 space-y-1 font-medium text-[13px]/4.5 list-disc md:text-sm/5">
+						<ul className="mt-2 ml-4 space-y-1 font-medium text-raisin-black/78 text-[13px]/4.5 list-disc md:text-sm/5">
 							{tncList.map((item, index) => (
 								<li key={index}>{item}</li>
 							))}

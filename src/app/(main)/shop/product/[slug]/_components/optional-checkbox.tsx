@@ -8,7 +8,9 @@ export const CakeWording = () => {
 			<span className="font-semibold text-sm md:text-base">
 				ADD CAKE WORDING
 			</span>
-			<span className="text-xs md:text-sm">Optional • max. 50 characters</span>
+			<span className="text-xs text-raisin-black/60 md:text-sm">
+				Optional • max. 50 characters
+			</span>
 		</button>
 	);
 };
@@ -23,7 +25,9 @@ export const GreetingCard = () => {
 			<span className="font-semibold text-sm md:text-base">
 				ADD GREETING CARD
 			</span>
-			<span className="text-xs md:text-sm">Optional • max. 100 characters</span>
+			<span className="text-xs text-raisin-black/60 md:text-sm">
+				Optional • max. 100 characters
+			</span>
 		</button>
 	);
 };

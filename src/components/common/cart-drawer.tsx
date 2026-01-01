@@ -2,15 +2,15 @@
 
 import { XIcon } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
 import { useLockBodyScroll } from "react-use";
 import BgPattern from "@/assets/bg-pattern.webp";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/lib/store/cart";
 import { cn } from "@/lib/utils";
 import { CartItemCard } from "./cart-item-card";
 
 export const CartDrawer = () => {
-	const [isOpen, setIsOpen] = useState(true);
+	const { isOpen, setIsOpen, lines, subtotal } = useCart();
 	useLockBodyScroll(isOpen);
 
 	return (
@@ -62,24 +62,33 @@ export const CartDrawer = () => {
 								</button>
 							</div>
 
-							<ul className="flex flex-col gap-4">
-								<li>
-									<CartItemCard />
-								</li>
-								<li>
-									<CartItemCard />
-								</li>
-							</ul>
+							{lines.length === 0 ? (
+								<div className="flex items-center justify-center h-40 text-gray-500">
+									<p>Your cart is empty</p>
+								</div>
+							) : (
+								<ul className="flex flex-col gap-4">
+									{lines.map(line => (
+										<li key={line.id}>
+											<CartItemCard line={line} />
+										</li>
+									))}
+								</ul>
+							)}
 						</div>
 
 						<footer className="p-4 pb-6 bg-white border-t">
 							<div className="flex items-center justify-between">
 								<span className="font-medium text-xs">SUBTOTAL</span>
 								<span className="font-rozha-one text-philippine-brown text-xl/5">
-									1.360
+									{subtotal.toLocaleString()}
 								</span>
 							</div>
-							<Button className="w-full mt-4" size="lg">
+							<Button
+								className="w-full mt-4"
+								size="lg"
+								disabled={lines.length === 0}
+							>
 								CHOOSE DELIVERY TIME
 							</Button>
 						</footer>

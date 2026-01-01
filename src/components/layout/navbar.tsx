@@ -12,11 +12,15 @@ import {
 	useWindowScroll,
 } from "react-use";
 import LogoImage from "@/assets/cake-commerce-logo-light.svg";
+import { useCart } from "@/lib/store/cart";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
+	const isCartOpen = useCart(state => state.isOpen);
+	const setIsCartOpen = useCart(state => state.setIsOpen);
+
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	useLockBodyScroll(isMenuOpen);
+	useLockBodyScroll(isMenuOpen || isCartOpen);
 
 	useKeyPressEvent("Escape", () => setIsMenuOpen(false));
 
@@ -29,6 +33,11 @@ export const Navbar = () => {
 	useEffect(() => {
 		setIsMenuOpen(false);
 	}, [pathname]);
+
+	const handleOpenCart = () => {
+		setIsCartOpen(true);
+		setIsMenuOpen(false);
+	};
 
 	return (
 		<>
@@ -51,6 +60,7 @@ export const Navbar = () => {
 						type="button"
 						aria-label="Open cart"
 						className="font-medium text-xs hover:text-slate-300 sm:text-sm md:hidden"
+						onClick={handleOpenCart}
 					>
 						CART
 					</button>
@@ -85,7 +95,11 @@ export const Navbar = () => {
 					<span>•</span>
 					<ul className="flex items-center gap-5 lg:gap-6">
 						<li>
-							<button type="button" aria-label="Open cart">
+							<button
+								type="button"
+								aria-label="Open cart"
+								onClick={handleOpenCart}
+							>
 								CART
 							</button>
 						</li>
@@ -100,7 +114,7 @@ export const Navbar = () => {
 			<AnimatePresence>
 				{isMenuOpen && (
 					<motion.div
-						className="fixed z-20 inset-0 bg-gray-900/70 backdrop-blur-xs"
+						className="fixed z-20 inset-0 bg-black/60 backdrop-blur-xs"
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
@@ -148,7 +162,11 @@ export const Navbar = () => {
 									<Link href="/faq">FAQ</Link>
 								</li>
 								<li>
-									<button type="button" aria-label="Open cart">
+									<button
+										type="button"
+										aria-label="Open cart"
+										onClick={handleOpenCart}
+									>
 										CART
 									</button>
 								</li>

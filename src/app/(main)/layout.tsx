@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { Toaster } from "sonner";
 import { CartDrawer } from "@/components/common/cart-drawer";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
@@ -18,7 +19,10 @@ export default function MainLayout({
 		<main className={cn(isNotHomePage && "pt-19 md:pt-18")}>
 			<Navbar />
 			<CartDrawer />
+
 			{children}
+
+			<Toaster richColors position="top-center" />
 			<Footer />
 		</main>
 	);
